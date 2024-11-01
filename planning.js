@@ -23,19 +23,25 @@ const readCSV = (filename, delimiter = ",") => {
 const airportsData = readCSV("airports.csv");
 const aeroplanesData = readCSV("aeroplanes.csv");
 const valid_flight_data = readCSV("valid_flight_data.csv");
+const invalid_flight_data = readCSV("valid_flight_data.csv");
 
-const calculateIncome = (inputData) => {
+const calculateSeatCost = (inputData) => {
 	inputData.forEach((row) => {
-		let economySeatCount = row[3] * 399;
-		let businessSeatCount = row[4] * 999;
-		let firstClassSeatCount = row[5] * 1899;
+		let economySeatCost = Number(row[3]) * 399;
+		let businessSeatCost = Number(row[4]) * 999;
+		let firstClassSeatCost = Number(row[5]) * 1899;
 
-		const total = economySeatCount + businessSeatCount + firstClassSeatCount;
+		let total = (economySeatCost + businessSeatCost + firstClassSeatCost).toFixed(2);
 		console.log(total);
 	});
 };
 
-console.log(calculateIncome(aeroplanesData));
+const calculateTotalSeatCount = () => {
+	// let totalSeatCount = Number(row[3]) + Number(row[4]) + Number(row[5]);
+};
+
+// Test
+calculateSeatCost(aeroplanesData);
 
 // Usage example
 // const airportsData = readCSV("airports.csv");
